@@ -87,6 +87,18 @@ Technologies and Languages used in this project!
     For Linux users access here and chosse your favorite format to install mysql https://dev.mysql.com/downloads/,
     with yum or apt repos.
 
+- Fourth you need to create your Google API key to request longitude and latitude
+
+    Access Google Cloud Website https://cloud.google.com/
+
+    Create a account if you dont have one
+
+    Configure you payment Format, and create you Project
+
+    Enable Geocoding Api for your project
+
+    Open Credential Tab en left side, and create your Credentials
+
 ### Installation
 
 1. Clone the repo
