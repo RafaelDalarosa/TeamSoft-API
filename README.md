@@ -73,21 +73,19 @@ Technologies and Languages used in this project!
 
 - First need install Node in your device.
 
-Access Node Website and choose you OS https://nodejs.org/en/download/
+    Access Node Website and choose you OS https://nodejs.org/en/download/
 
 - Second if you want to run HTTPS Server you will need SSL certificate
 
-Acess Node Website and follow this instruction to generate you own certificate,
-https://nodejs.org/en/knowledge/HTTP/servers/how-to-create-a-HTTPS-server/
+    Acess Node Website and follow this instruction to generate you own certificate,
+    https://nodejs.org/en/knowledge/HTTP/servers/how-to-create-a-HTTPS-server/
 
 - Third you need to create your database with MYSQL
 
-Access Mysql Website for windows https://dev.mysql.com/downloads/installer/
+    Access Mysql Website for windows https://dev.mysql.com/downloads/installer/
 
-For Linux users acess here and chosse your favarite format https://dev.mysql.com/downloads/,
-with yum or apt repos.
-
-- Fourth you going need to install modules in Node Project
+    For Linux users access here and chosse your favorite format to install mysql https://dev.mysql.com/downloads/,
+    with yum or apt repos.
 
 ### Installation
 
@@ -98,9 +96,9 @@ with yum or apt repos.
    ```
 2. Create .env to define yours environment variables
    
-   You can follow .env.example to guide you to define yours environment variables.
+    You can follow .env.example to guide you to define yours environment variables.
 
-   Your .env need to be in root directory of project.
+    Your .env need to be in root directory of project.
 
 3.  Install Node Modules
 
@@ -111,11 +109,11 @@ with yum or apt repos.
     ```
 4. Copy SSL Certificate (Optional)
 
-   After generate you certificate copy to "/src/config" path
+    After generate you certificate copy to "/src/config" path
 
 5. Run db.sql to create your tables inside of your database
 
-   db.sql is located inside "/src/sql" directory
+    db.sql is located inside "/src/sql" directory
 
 6. Run the API Project
 
