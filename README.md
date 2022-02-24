@@ -111,11 +111,11 @@ with yum or apt repos.
     ```
 4. Copy SSL Certificate (Optional)
 
-   After generate you certificate copy to /src/config path
+   After generate you certificate copy to "/src/config" path
 
 5. Run db.sql to create your tables inside of your database
 
-   db.sql is located inside /src/sql directory
+   db.sql is located inside "/src/sql" directory
 
 6. Run the API Project
 
