@@ -1,0 +1,383 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "TeamSoft API",
+        "description": "Documentação da TeamSoft API",
+        "contact": {
+            "email": "rafaelhcd@hotmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3000/",
+            "description": "Api de teste"
+        }
+    ],
+    "paths": {
+        "/cliente": {
+            "post": {
+                "summary": "Cadastro de cliente",
+                "description": "Cadastro de cliente",
+                "tags": ["Clientes"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Cliente"
+                            },
+                            "examples": {
+                                "cliente (id automático)": {
+                                    "value": {
+                                        "cnpj": "27.339.766/0001-51",
+                                        "razao_social": "TEAMSOFT TECNOLOGIA E SISTEMAS LTDA",
+                                        "nome_do_contato": "THIAGO FERNANDES DIAS DA SILVA",
+                                        "telefone": "(21) 98903-3185"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Usuario Cadastrado com sucesso!"
+                    },
+                    "400": {
+                        "description": "Ouve um erro com o a conexão com o banco de dados, tente de novo mais tarde!"
+                    }
+                }
+            },
+            "get": {
+                "summary": "Busca de todos Clientes",
+                "description": "Busca de todos Clientes",
+                "tags": ["Clientes"],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array" ,
+                                    "items": {
+                                        "$ref": "#/components/schemas/Cliente"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Ouve um erro com o a conexão com o banco de dados, tente de novo mais tarde!"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Edição do cadastro do cliente",
+                "description": "Edição do cadastro do cliente",
+                "tags": ["Clientes"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Cliente"
+                            },
+                            "examples": {
+                                "cliente": {
+                                    "value": {
+                                        "id": 3,
+                                        "cnpj": "27.339.766/0001-51",
+                                        "razao_social": "TEAMSOFT TECNOLOGIA E SISTEMAS LTDA",
+                                        "nome_do_contato": "THIAGO FERNANDES DIAS DA SILVA",
+                                        "telefone": "(21) 98903-3185"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Usuario editado com sucesso!"
+                    },
+                    "400": {
+                        "description": "Ouve um erro com o a conexão com o banco de dados, tente de novo mais tarde!"
+                    }
+                }
+            }
+        },
+        "/cliente/{id}": {
+            "get": {
+                "summary": "Busca de cliente por id",
+                "description": "Busca de cliente por id",
+                "tags": ["Clientes"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "minimum": 1
+                        },
+                        "description": "Id do cliente"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object" ,
+                                    "$ref": "#/components/schemas/Cliente"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Ouve um erro com o a conexão com o banco de dados, tente de novo mais tarde!"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Deletar um cliente por id",
+                "description": "Deletar um cliente por id",
+                "tags": ["Clientes"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "minimum": 1
+                        },
+                        "description": "Id do cliente"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Cliente deletado com sucesso!"
+                    },
+                    "400": {
+                        "description": "Ouve um erro com o a conexão com o banco de dados, tente de novo mais tarde!"
+                    }
+                }
+            }
+        },
+        "/endereco": {
+            "post": {
+                "summary": "Cadastro de endereço",
+                "description": "Cadastro de endereço",
+                "tags": ["Endereço"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Endereço"
+                            },
+                            "examples": {
+                                "endereço (id automático)": {
+                                    "value": {
+                                        "id_cliente": 4,
+                                        "numero": 201,
+                                        "logradouro": "rua cordovil",
+                                        "bairro": "parada de lucas",
+                                        "cidade": "rio de janeiro",
+                                        "cep": 21250450,
+                                        "estado": "RJ" 
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Endereço cadastrado com sucesso!"
+                    },
+                    "400": {
+                        "description": "Ouve um erro com o a conexão com o banco de dados, tente de novo mais tarde!"
+                    }
+                }
+            },
+            "get": {
+                "summary": "Busca de todos endereços",
+                "description": "Busca de todos endereços",
+                "tags": ["Endereço"],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array" ,
+                                    "items": {
+                                        "$ref": "#/components/schemas/Endereço"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Ouve um erro com o a conexão com o banco de dados, tente de novo mais tarde!"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Edição de endereço",
+                "description": "Edição de endereço",
+                "tags": ["Endereço"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Endereço"
+                            },
+                            "examples": {
+                                "cliente": {
+                                    "value": {	
+                                        "id": 1,
+                                        "id_cliente": 3,
+                                        "numero": 3664,
+                                        "logradouro": "Av. Sete de Setembro",
+                                        "bairro": "Centro",
+                                        "cidade": "Curitiba",
+                                        "cep": 83606580,
+                                        "estado": "PR"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Endereço editado com sucesso!"
+                    },
+                    "400": {
+                        "description": "Ouve um erro com o a conexão com o banco de dados, tente de novo mais tarde!"
+                    }
+                }
+            }
+        },
+        "/endereco/{id}": {
+            "get": {
+                "summary": "Busca de endereço por id",
+                "description": "Busca de endereço por id",
+                "tags": ["Endereço"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "minimum": 1
+                        },
+                        "description": "Id do endereço"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object" ,
+                                    "$ref": "#/components/schemas/Endereço"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Ouve um erro com o a conexão com o banco de dados, tente de novo mais tarde!"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Deletar um endereço por id",
+                "description": "Deletar um endereço por id",
+                "tags": ["Endereço"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "minimum": 1
+                        },
+                        "description": "Id do endereço"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Endereço deletado com sucesso!"
+                    },
+                    "400": {
+                        "description": "Ouve um erro com o a conexão com o banco de dados, tente de novo mais tarde!"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Cliente": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "number"
+                    },
+                    "cnpj": {
+                        "type": "string"
+                    },
+                    "razao_social": {
+                        "type": "string"
+                    },
+                    "nome_do_contato": {
+                        "type": "string"
+                    },
+                    "telefone": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Endereço": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "number"
+                    },
+                    "id_client": {
+                        "type": "number"
+                    },
+                    "logradouro": {
+                        "type": "string"
+                    },
+                    "numero": {
+                        "type": "number"
+                    },
+                    "complemento": {
+                        "type": "string"
+                    },
+                    "bairro": {
+                        "type": "string"
+                    },
+                    "cidade": {
+                        "type": "string"
+                    },
+                    "estado": {
+                        "type": "string"
+                    },
+                    "cep": {
+                        "type": "number"
+                    },
+                    "latitude": {
+                        "type": "number"
+                    },
+                    "longitude": {
+                        "type": "number"
+                    }
+                }
+            }
+        }
+    }
+}
