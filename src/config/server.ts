@@ -42,12 +42,7 @@ export default class Server {
         const options = {cert: this.cert, key: this.key, allowHTTP1: true};
         if ( this.cert == undefined || this.key == undefined){
             console.log("HTTPS Server is not ready because no valid certificate is loaded!")
-        } /* else {
-            http2.createSecureServer(options, this.app).listen(this.httpsPort, () => {
-            console.log(`Server is running in https://${this.ip}:${this.httpsPort}`);
-            });
-        } */
-        else {
+        } else {
             http2.createSecureServer(options, this.app).listen(this.httpsPort, () => {
             console.log(`Server is running in https://${this.ip}:${this.httpsPort}`);
             });
