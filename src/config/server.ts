@@ -1,8 +1,9 @@
 // Importação de Dependências Externas (Pacotes NPM);
 
 import express, { Application } from 'express';
+import http2Express from 'http2-express-bridge';
 import http from 'http';
-import https from 'https';
+import http2 from 'http2';
 
 // Classe responsável por instanciar servidores HTTP e HTTPS com certificado SSL,
 // necessário passar o certificado, portas, middlewares e rotas como parametro.
@@ -16,7 +17,7 @@ export default class Server {
     public cert?: Buffer;
 
     constructor(appConfig: {ip: string, key?: Buffer, cert?: Buffer, httpPort?: string, httpsPort?: string, middlewares: Array<any>, routes: Array<any>}){    
-        this.app = express();
+        this.app = http2Express(express);
         this.ip = appConfig.ip;
         this.key = appConfig.key;
         this.cert = appConfig.cert;
@@ -38,11 +39,16 @@ export default class Server {
     // Metodo que sobe o servidor HTTPS com certificado SSL do Node.
 
     public httpsServer() {
-        const options = {cert: this.cert, key: this.key};
+        const options = {cert: this.cert, key: this.key, allowHTTP1: true};
         if ( this.cert == undefined || this.key == undefined){
             console.log("HTTPS Server is not ready because no valid certificate is loaded!")
-        } else {
-            https.createServer(options, this.app).listen(this.httpsPort, () => {
+        } /* else {
+            http2.createSecureServer(options, this.app).listen(this.httpsPort, () => {
+            console.log(`Server is running in https://${this.ip}:${this.httpsPort}`);
+            });
+        } */
+        else {
+            http2.createSecureServer(options, this.app).listen(this.httpsPort, () => {
             console.log(`Server is running in https://${this.ip}:${this.httpsPort}`);
             });
         }
